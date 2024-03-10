@@ -1,19 +1,12 @@
+import { connectDB } from '@/services/connectDB'
 import { MongoClient } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export async function POST(req: Request, res: NextApiResponse) {
-    const MONGODB_URI = process.env.MONGODB_URI
+export async function POST(req: Request) {
     const { data } = await req.json()
-    console.log(data)
-    if (MONGODB_URI) {
-        const client = new MongoClient(MONGODB_URI)
-        const database = client.db('nextcommerce')
-        const collection = database.collection('nextcommerce')
+    const db = await connectDB()
 
-        const res = await collection.insertOne({ data })
+    const res = await db?.collection.insertOne({ data })
 
-        return Response.json(res)
-    } else {
-        return console.log('Something went wrong!')
-    }
+    return Response.json(res)
 }
