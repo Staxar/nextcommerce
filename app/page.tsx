@@ -15,6 +15,7 @@ export default function Home() {
                 <p className="text-xl leading-7">Recent items</p>
                 <RecentItems />
             </div>
+
             <Footer />
         </main>
     )
