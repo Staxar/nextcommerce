@@ -1,21 +1,33 @@
-import { CarouselSize } from "@/components/CarouselSize";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+'use client'
+import Carousel from '@/components/Carousel'
+import RecentItems, { Product, productData } from '@/components/RecentItems'
+import { SkeletonCard } from '@/components/SkeletonCard'
+import { getLimitProducts } from '@/services/getData'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Header />
-      <div className="flex flex-col place-items-center text-3xl text-center">
-        <h3 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-5xl">
-          E-commerce with NextJS
-        </h3>  
-      <CarouselSize />
-      </div>
-      <Footer />
+    const [data, setData] = useState<productData[] | null>(null)
+    useEffect(() => {
+        async function fetchLimitData() {
+            try {
+                await getLimitProducts().then((res) => {
+                    setData(res)
+                })
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+        fetchLimitData()
+    }, [])
+    return (
+        <div className="flex flex-col place-items-center text-3xl text-center my-4 lg:w-full max-w-5xl">
+            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                Best ecommerce shop
+            </h2>
+            <Carousel />
+            <p className="text-xl leading-7">Recent items</p>
 
-
-
-    </main>
-  );
+            {data ? <RecentItems data={data} /> : <SkeletonCard />}
+        </div>
+    )
 }

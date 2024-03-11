@@ -11,14 +11,14 @@ function Footer() {
       rel="noopener noreferrer"
     >
       By{" Marcin D."}
-      <Image
+      {/* <Image
         src="/images/60386643.png"
         alt="Creator Logo"
         className="dark:invert"
         width={50}
         height={24}
         priority
-      />
+      /> */}
     </a>
   </div>
   )
