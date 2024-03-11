@@ -12,7 +12,7 @@ interface ItemCardProps {
 
 function ItemCard({ _id, name, prize, availability }: ItemCardProps) {
     return (
-        <Link href={'/details'}>
+        <Link href={`/products/${_id}`}>
             <Card className="w-full flex flex-col items-center justify-center h-48">
                 <CardHeader>
                     <Image
