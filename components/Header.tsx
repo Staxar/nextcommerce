@@ -1,8 +1,9 @@
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { ShoppingBasket } from 'lucide-react'
-import Link from 'next/link'
 import { HeaderMenu } from './HeaderMenu'
+import { Badge } from './ui/badge'
+import Basket from './Basket'
 
 function Header() {
     return (
@@ -18,7 +19,7 @@ function Header() {
                             </small>
                         </AvatarFallback>
                     </Avatar>
-                    <ShoppingBasket size={24} />
+                    <Basket />
                 </div>
             </div>
         </div>
