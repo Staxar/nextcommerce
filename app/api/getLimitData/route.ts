@@ -12,5 +12,6 @@ export async function GET() {
         }
     } else {
         console.log('Connection to database failed!')
+        return Response.error()
     }
 }
