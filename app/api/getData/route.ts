@@ -1,7 +1,7 @@
 import { connectDB } from '@/services/connectDB'
 import { Collection, MongoClient, Document } from 'mongodb'
 
-interface Connection {
+export interface Connection {
     collection: Collection<Document>
     client: MongoClient
 }

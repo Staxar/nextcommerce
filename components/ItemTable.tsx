@@ -138,7 +138,7 @@ export const columns: ColumnDef<productData>[] = [
     },
 ]
 
-export function ItemTable(data: productData[]) {
+export function ItemTable() {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] =
         React.useState<ColumnFiltersState>([])

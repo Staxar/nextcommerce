@@ -27,7 +27,7 @@ export default function Profile() {
                 </h3>
                 <AddProduct />
             </div>
-            <ItemTable data={data} />
+            <ItemTable />
         </div>
     )
 }
