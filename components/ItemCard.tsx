@@ -13,7 +13,7 @@ interface ItemCardProps {
 function ItemCard({ _id, name, prize, availability }: ItemCardProps) {
     return (
         <Link href={`/products/${_id}`}>
-            <Card className="w-full flex flex-col items-center justify-center h-48">
+            <Card className="w-full flex flex-col items-center justify-center h-48 lg:max-w-xs">
                 <CardHeader>
                     <Image
                         src={'/images/60386643.png'}

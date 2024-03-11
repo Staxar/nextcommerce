@@ -13,7 +13,7 @@ export interface RecentItemsProps {
 }
 const RecentItems: React.FC<RecentItemsProps> = ({ data }) => {
     return (
-        <div className="w-full grid grid-cols-2 gap-4 my-4">
+        <div className="w-full grid grid-cols-3 gap-4 my-4">
             {data.map((product, index) => (
                 <ItemCard
                     key={index}

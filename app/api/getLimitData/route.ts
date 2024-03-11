@@ -6,7 +6,7 @@ interface Connection {
     client: MongoClient
 }
 
-export async function GET(req: Request) {
+export async function GET() {
     const connection: Connection | null = await connectDB()
     if (connection) {
         try {

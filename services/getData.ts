@@ -9,14 +9,9 @@ export const getAllProducts = async () => {
     }
 }
 
-export const getLimitProducts = async (limit: number) => {
-    console.log('🚀 ~ getLimitProducts ~ limit:', limit)
-
+export const getLimitProducts = async () => {
     try {
-        const response = await axios.get('/api/getLimitData', {
-            params: { limit },
-        })
-        console.log('🚀 ~ getLimitProducts ~ response:', response)
+        const response = await axios.get('/api/getLimitData')
 
         return response.data
     } catch (error) {
