@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
     const [data, setData] = useState<productData[] | null>(null)
-    console.log(data)
     useEffect(() => {
         async function fetchLimitData() {
             try {

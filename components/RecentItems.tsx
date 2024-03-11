@@ -8,13 +8,15 @@ export interface Product {
     availability: boolean
 }
 
+export interface productDetails {
+    name: string
+    prize: number
+    availability: boolean
+}
+
 export interface productData {
     _id: ObjectId
-    data: {
-        name: string
-        prize: number
-        availability: boolean
-    }
+    data: productDetails
 }
 
 export interface RecentItemsProps {

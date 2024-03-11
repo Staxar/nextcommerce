@@ -1,11 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import axios from 'axios'
-import { ShoppingBag } from 'lucide-react'
-import Image from 'next/image'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { productData } from '@/components/RecentItems'
+import ItemDetails from '@/components/ItemDetails'
 
 export default function Page({ params }: { params: { slug: string } }) {
     const [data, setData] = useState<productData | undefined>(undefined)
@@ -30,38 +28,10 @@ export default function Page({ params }: { params: { slug: string } }) {
     return (
         <div className="flex flex-col">
             {data ? (
-                <Card className="text-center items-center">
-                    <CardHeader>
-                        <Image
-                            src={'/images/60386643.png'}
-                            alt="product image"
-                            height={500}
-                            width={250}
-                        />
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-xl text-muted-foreground">
-                            {data.data.name}
-                        </p>
-                        <p className="text-xl text-muted-foreground">
-                            Available:{' '}
-                            {data.data.availability
-                                ? 'Available'
-                                : 'Out of stock'}
-                        </p>
-                        <small className="text-sm font-medium leading-none">
-                            Prize: {data.data.prize}
-                        </small>
-                    </CardContent>
-                </Card>
+                <ItemDetails data={data.data} _id={data._id} />
             ) : (
                 <SkeletonCard />
             )}
-
-            <div className="flex gap-4 my-8">
-                <p className="text-xl text-muted-foreground">Add to store</p>
-                <ShoppingBag />
-            </div>
         </div>
     )
 }

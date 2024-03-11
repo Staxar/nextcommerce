@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Card, CardHeader, CardContent, CardFooter } from './ui/card'
 import Link from 'next/link'
 import { ObjectId } from 'mongodb'
+import { ShoppingBag } from 'lucide-react'
 
 interface ItemCardProps {
     _id: ObjectId
@@ -26,10 +27,13 @@ function ItemCard({ _id, name, prize, availability }: ItemCardProps) {
                     <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
                         {name}
                     </h4>
-                </CardContent>
-                <CardFooter>
                     <small className="text-md font-medium leading-none">
                         {prize}
+                    </small>
+                </CardContent>
+                <CardFooter>
+                    <small className="text-xs font-medium leading-none flex gap-2 items-center">
+                        Add to store: <ShoppingBag size={18} />
                     </small>
                 </CardFooter>
             </Card>
