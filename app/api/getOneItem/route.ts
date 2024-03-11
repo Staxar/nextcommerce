@@ -1,10 +1,5 @@
 import { connectDB } from '@/services/connectDB'
-import { Collection, MongoClient, Document } from 'mongodb'
-
-interface Connection {
-    collection: Collection<Document>
-    client: MongoClient
-}
+import { Connection } from '../getData/route'
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url)

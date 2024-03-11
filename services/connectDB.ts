@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { Collection, MongoClient } from 'mongodb'
 
 export async function connectDB() {
     const MONGODB_URI = process.env.MONGODB_URI
