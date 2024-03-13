@@ -1,6 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { productData } from '@/components/RecentItems'
 import ItemDetails from '@/components/ItemDetails'

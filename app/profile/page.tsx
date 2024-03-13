@@ -2,8 +2,7 @@
 import { AddProduct } from '@/components/AddProduct'
 import { ItemTable } from '@/components/ItemTable'
 import { productData } from '@/components/RecentItems'
-import { getAllProducts } from '@/services/getData'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Profile() {
     const [data, setData] = useState<productData[] | null>(null)

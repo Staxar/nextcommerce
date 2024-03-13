@@ -1,10 +1,8 @@
 'use client'
 import Carousel from '@/components/Carousel'
-import RecentItems, { Product, productData } from '@/components/RecentItems'
+import RecentItems, { productData } from '@/components/RecentItems'
 import { SkeletonCard } from '@/components/SkeletonCard'
-import { getLimitProducts } from '@/services/getData'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
     const [data, setData] = useState<productData[] | null>(null)

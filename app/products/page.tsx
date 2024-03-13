@@ -1,8 +1,7 @@
 'use client'
 import RecentItems, { productData } from '@/components/RecentItems'
 import { SkeletonCard } from '@/components/SkeletonCard'
-import { getAllProducts } from '@/services/getData'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Products() {
     const [data, setData] = useState<productData[] | null>(null)
