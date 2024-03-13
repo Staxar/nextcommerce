@@ -10,6 +10,8 @@ export async function GET(request: Request) {
             const res = await connection.collection.findOne(searchParams)
 
             return Response.json(res)
+        } catch (error) {
+            return Response.error()
         } finally {
             await connection.client.close()
         }

@@ -7,6 +7,8 @@ export async function GET() {
         try {
             const res = await connection.collection.find().limit(5).toArray()
             return Response.json(res)
+        } catch (error) {
+            return Response.error()
         } finally {
             await connection.client.close()
         }
