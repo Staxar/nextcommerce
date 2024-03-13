@@ -8,18 +8,18 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
     const [data, setData] = useState<productData[] | null>(null)
-    useEffect(() => {
-        async function fetchLimitData() {
-            const response = await axios.get('/api/getLimitData')
-            if (response.status === 200) {
-                setData(response.data)
-            } else {
-                console.log('Something goes wrong!')
-            }
-        }
+    // useEffect(() => {
+    //     async function fetchLimitData() {
+    //         const response = await axios.get('/api/getLimitData')
+    //         if (response.status === 200) {
+    //             setData(response.data)
+    //         } else {
+    //             console.log('Something goes wrong!')
+    //         }
+    //     }
 
-        fetchLimitData()
-    }, [])
+    //     fetchLimitData()
+    // }, [])
     return (
         <div className="flex flex-col place-items-center text-3xl text-center my-4 lg:w-full max-w-5xl">
             <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
