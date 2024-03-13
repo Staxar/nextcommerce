@@ -15,9 +15,8 @@ export async function GET(request: NextRequest) {
         }
 
         const { searchParams } = new URL(request.url)
-        const limitData = Number(searchParams.get('limit')) || 5
 
-        const data = await collection.find().limit(limitData).toArray()
+        const data = await collection.findOne(searchParams)
 
         return NextResponse.json(data)
     } catch (error) {

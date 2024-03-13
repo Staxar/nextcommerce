@@ -1,23 +1,31 @@
 'use client'
 import RecentItems, { productData } from '@/components/RecentItems'
 import { SkeletonCard } from '@/components/SkeletonCard'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useToast } from '@/components/ui/use-toast'
 
 export default function Products() {
     const [data, setData] = useState<productData[] | null>(null)
-
-    // useEffect(() => {
-    //     async function fetchAllData() {
-    //         try {
-    //             await getAllProducts().then((res) => {
-    //                 setData(res)
-    //             })
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error)
-    //         }
-    //     }
-    //     fetchAllData()
-    // }, [])
+    const { toast } = useToast()
+    useEffect(() => {
+        async function fetchAllData() {
+            try {
+                const response = await axios.get('/api/getData')
+                if (response.status === 200) {
+                    setData(response.data)
+                } else {
+                    toast({
+                        variant: 'destructive',
+                        description: 'Failed to fetch data!',
+                    })
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+        fetchAllData()
+    }, [])
     return (
         <div className="">
             {data ? <RecentItems data={data} /> : <SkeletonCard />}
