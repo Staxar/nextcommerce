@@ -1,11 +1,18 @@
-import { connectDB } from '@/services/connectDB'
+import { MongoClient } from 'mongodb'
 
 export async function POST(req: Request) {
     const { data } = await req.json()
+    const MONGODB_URI = process.env.MONGODB_URI
+    if (MONGODB_URI) {
+        const client = new MongoClient(MONGODB_URI)
+        await client.connect()
+        const database = client.db('nextcommerce')
+        const collection = database.collection('nextcommerce')
 
-    const db = await connectDB()
+        const res = await collection.insertOne({ data })
 
-    const res = await db?.collection.insertOne({ data })
-    console.log(res)
-    return Response.json(res)
+        return Response.json({ res })
+    } else {
+        return Response.error()
+    }
 }
