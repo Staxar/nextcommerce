@@ -13,9 +13,7 @@ export async function GET() {
             const data = await connection.collection.find().toArray()
             return Response.json(data)
         } catch (error) {
-            return new Response(`error: ${error}`, {
-                status: 400,
-            })
+            return Response.error()
         } finally {
             await connection.client.close()
         }
