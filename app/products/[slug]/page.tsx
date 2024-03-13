@@ -6,7 +6,7 @@ import { productData } from '@/components/RecentItems'
 import ItemDetails from '@/components/ItemDetails'
 
 export default function Page({ params }: { params: { slug: string } }) {
-    const [data, setData] = useState<productData | undefined>(undefined)
+    const [data, setData] = useState<productData | null>(null)
 
     useEffect(() => {
         async function fetchOneItem() {
