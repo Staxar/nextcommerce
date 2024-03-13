@@ -9,14 +9,17 @@ export interface Connection {
 export async function GET() {
     const connection: Connection | null = await connectDB()
     if (connection) {
-        try {
-            const data = await connection.collection.find().toArray()
-            return Response.json(data)
-        } catch (error) {
-            return Response.error()
-        } finally {
-            await connection.client.close()
-        }
+        const data = await connection.collection.find().toArray()
+        await connection.client.close()
+        return Response.json(data)
+        // try {
+        //     const data = await connection.collection.find().toArray()
+        //     return Response.json(data)
+        // } catch (error) {
+        //     return Response.error()
+        // } finally {
+        //     await connection.client.close()
+        // }
     } else {
         console.log('Connection to database failed!')
         return Response.error()

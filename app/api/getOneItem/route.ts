@@ -6,15 +6,18 @@ export async function GET(request: Request) {
 
     const connection: Connection | null = await connectDB()
     if (connection) {
-        try {
-            const res = await connection.collection.findOne(searchParams)
+        const res = await connection.collection.findOne(searchParams)
+        await connection.client.close()
+        return Response.json(res)
+        // try {
+        //     const res = await connection.collection.findOne(searchParams)
 
-            return Response.json(res)
-        } catch (error) {
-            return Response.error()
-        } finally {
-            await connection.client.close()
-        }
+        //     return Response.json(res)
+        // } catch (error) {
+        //     return Response.error()
+        // } finally {
+        //     await connection.client.close()
+        // }
     } else {
         console.log('Connection to database failed!')
         return Response.error()
