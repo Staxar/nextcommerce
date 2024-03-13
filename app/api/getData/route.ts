@@ -1,8 +1,9 @@
 import { MongoClient } from 'mongodb'
 import { NextResponse } from 'next/server'
 
+const MONGODB_URI = process.env.MONGODB_URI || null
+
 export async function GET() {
-    const MONGODB_URI = process.env.MONGODB_URI
     if (MONGODB_URI) {
         const client = new MongoClient(MONGODB_URI)
         await client.connect()
