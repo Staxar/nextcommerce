@@ -25,6 +25,6 @@ export async function GET(request: NextRequest) {
         console.error('Error:', error)
         return NextResponse.error()
     } finally {
-        client.close()
+        await client.close()
     }
 }
