@@ -12,11 +12,14 @@ export async function GET() {
         try {
             const data = await connection.collection.find().toArray()
             return Response.json(data)
+        } catch (error) {
+            return new Response(`error: ${error}`, {
+                status: 400,
+            })
         } finally {
             await connection.client.close()
         }
     } else {
         console.log('Connection to database failed!')
-        return Response.error()
     }
 }
