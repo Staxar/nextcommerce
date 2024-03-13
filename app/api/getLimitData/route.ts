@@ -1,5 +1,3 @@
-import { connectDB } from '@/services/connectDB'
-import { Connection } from '../getData/route'
 import { MongoClient } from 'mongodb'
 
 export async function GET() {
@@ -13,5 +11,7 @@ export async function GET() {
         const res = await collection.find().limit(5).toArray()
 
         return Response.json({ res })
+    } else {
+        return Response.error()
     }
 }
