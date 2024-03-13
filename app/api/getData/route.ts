@@ -12,6 +12,8 @@ export async function GET() {
         try {
             const data = await connection.collection.find().toArray()
             return Response.json(data)
+        } catch (error) {
+            return Response.error()
         } finally {
             await connection.client.close()
         }
