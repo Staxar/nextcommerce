@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
     const MONGODB_URI = process.env.MONGODB_URI
@@ -7,9 +8,11 @@ export async function GET() {
         await client.connect()
         const database = client.db('nextcommerce')
         const collection = database.collection('nextcommerce')
-        return { collection, client }
+
+        const data = await collection.find().toArray()
+
+        return NextResponse.json(data)
     } else {
-        console.log('Something went wrong!')
-        return null
+        return NextResponse.error()
     }
 }
