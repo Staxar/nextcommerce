@@ -7,9 +7,9 @@ export interface Connection {
 }
 
 export async function GET() {
-    const connection: Connection | null = await connectDB()
-
-    const data = await connection?.collection.find().toArray()
+    // const connection: Connection | null = await connectDB()
+    const db = await connectDB()
+    const data = await db?.collection.find().toArray()
     return Response.json(data)
     // try {
     //     const data = await connection.collection.find().toArray()
