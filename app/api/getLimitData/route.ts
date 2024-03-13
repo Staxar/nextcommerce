@@ -1,17 +1,17 @@
 import { connectDB } from '@/services/connectDB'
 import { Connection } from '../getData/route'
+import { MongoClient } from 'mongodb'
 
 export async function GET() {
-    const connection: Connection | null = await connectDB()
+    const MONGODB_URI = process.env.MONGODB_URI
+    if (MONGODB_URI) {
+        const client = new MongoClient(MONGODB_URI)
+        await client.connect()
+        const database = client.db('nextcommerce')
+        const collection = database.collection('nextcommerce')
 
-    const res = await connection?.collection.find().limit(5).toArray()
-    return Response.json(res)
-    // try {
-    //     const res = await connection.collection.find().limit(5).toArray()
-    //     return Response.json(res)
-    // } catch (error) {
-    //     return Response.error()
-    // } finally {
-    //     await connection.client.close()
-    // }
+        const res = await collection.find().limit(5).toArray()
+
+        return Response.json({ res })
+    }
 }

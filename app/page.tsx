@@ -3,20 +3,21 @@ import Carousel from '@/components/Carousel'
 import RecentItems, { Product, productData } from '@/components/RecentItems'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { getLimitProducts } from '@/services/getData'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
     const [data, setData] = useState<productData[] | null>(null)
     useEffect(() => {
         async function fetchLimitData() {
-            try {
-                await getLimitProducts().then((res) => {
-                    setData(res)
-                })
-            } catch (error) {
-                console.error('Error fetching data:', error)
+            const response = await axios.get('/api/getLimitData')
+            if (response.status === 200) {
+                setData(response.data)
+            } else {
+                console.log('Something goes wrong!')
             }
         }
+
         fetchLimitData()
     }, [])
     return (
