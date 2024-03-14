@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { StoreProvider } from './GlobalRedux/provider'
 
 const fontSans = FontSans({
     subsets: ['latin'],
@@ -29,12 +30,14 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                <main className="flex min-h-screen flex-col items-center justify-between px-6 py-28">
-                    <Header />
-                    {children}
-                    <Toaster />
-                    <Footer />
-                </main>
+                <StoreProvider>
+                    <main className="flex min-h-screen flex-col items-center justify-between px-6 py-28">
+                        <Header />
+                        {children}
+                        <Toaster />
+                        <Footer />
+                    </main>
+                </StoreProvider>
             </body>
         </html>
     )
