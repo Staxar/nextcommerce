@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import connectToDatabase from '../utils/connectdatabase'
 
-export const dynamic = 'auto'
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
     const { client, collection } = await connectToDatabase()
