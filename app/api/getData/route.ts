@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import connectToDatabase from '../utils/connectdatabase'
 
-export const dynamic = 'edge'
+export const dynamic = 'auto'
 
 export async function GET() {
     const { client, collection } = await connectToDatabase()
