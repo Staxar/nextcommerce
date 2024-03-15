@@ -24,16 +24,16 @@ function ItemCard({ _id, name, prize, availability }: ItemCardProps) {
                     height={50}
                 />
             </CardHeader>
-            <CardContent className="items-center justify-center text-center">
+            <CardContent className="items-center justify-center text-center flex gap-2 flex-col">
                 <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
                     {name}
                 </h4>
-                <small className="text-md font-medium leading-none">
-                    {prize}
-                </small>
+                <AddToStore />
             </CardContent>
             <CardFooter>
-                <AddToStore />
+                <small className="text-md font-medium leading-none">
+                    ${prize}
+                </small>
             </CardFooter>
         </Card>
         // </Link>

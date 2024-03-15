@@ -6,7 +6,7 @@ import { RootState } from '@/app/GlobalRedux/store'
 
 const Basket = () => {
     const count = useSelector((state: RootState) => state.counter.value)
-    console.log(count)
+
     return (
         <div className="flex items-center">
             <BasketIcon count={count} />

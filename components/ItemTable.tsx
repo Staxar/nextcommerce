@@ -42,30 +42,35 @@ const data: Payment[] = [
         amount: 316,
         status: 'success',
         email: 'ken99@yahoo.com',
+        test: 'asd',
     },
     {
         id: '3u1reuv4',
         amount: 242,
         status: 'success',
         email: 'Abe45@gmail.com',
+        test: 'asd',
     },
     {
         id: 'derv1ws0',
         amount: 837,
         status: 'processing',
         email: 'Monserrat44@gmail.com',
+        test: 'asd',
     },
     {
         id: '5kma53ae',
         amount: 874,
         status: 'success',
         email: 'Silas22@gmail.com',
+        test: 'asd',
     },
     {
         id: 'bhqecj4p',
         amount: 721,
         status: 'failed',
         email: 'carmella@hotmail.com',
+        test: 'asd',
     },
 ]
 
@@ -74,6 +79,7 @@ export type Payment = {
     amount: number
     status: 'pending' | 'processing' | 'success' | 'failed'
     email: string
+    test: string
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -141,6 +147,13 @@ export const columns: ColumnDef<Payment>[] = [
 
             return <div className="text-right font-medium">{formatted}</div>
         },
+    },
+    {
+        accessorKey: 'test',
+        header: 'Test',
+        cell: ({ row }) => (
+            <div className="capitalize">{row.getValue('test')}</div>
+        ),
     },
     {
         id: 'actions',
