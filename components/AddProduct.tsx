@@ -43,7 +43,7 @@ export function AddProduct() {
     })
     const { toast } = useToast()
     const handleSaveData = async (values: any) => {
-        const response = await fetch('/api/saveData', {
+        const response = await fetch('/api/addItem', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,6 +52,7 @@ export function AddProduct() {
         })
 
         if (response.ok) {
+            form.reset()
             toast({
                 variant: 'default',
                 description: 'Data saved successfully!',
